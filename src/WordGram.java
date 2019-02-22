@@ -13,6 +13,12 @@ public class WordGram {
 		System.arraycopy(source, start, myWords, 0, size);
 	}
 
+	/**
+	 * Return word given its index
+	 * @param index of word
+	 * @return string/word[index]
+	 * @throws IndexOutOfBoundsException if index < 0 or index >= length()
+	 */
 	public String wordAt(int index) {
 		if (index < 0 || index >= myWords.length) {
 			throw new IndexOutOfBoundsException("bad index in wordAt "+index);
@@ -20,10 +26,15 @@ public class WordGram {
 		return myWords[index];
 	}
 
+	/**
+	 * Returns # words in this WordGram
+	 * @return order of wordgram, # words
+	 */
 	public int length(){
 		return myWords.length;
 	}
 
+	@Override
 	public boolean equals(Object o) {
 		if (! (o instanceof WordGram) || o == null){
 			return false;
@@ -41,6 +52,7 @@ public class WordGram {
 		return true;
 	}
 
+	@Override
 	public int hashCode(){
 		if (myHash == 0){
 			myHash = toString().hashCode();
@@ -48,6 +60,12 @@ public class WordGram {
 		return myHash;
 	}
 
+	/**
+	 * Return a new WordGram based on this one and last, new
+	 * WordGram has words[1],2,...,length()-1, and then last.
+	 * @param last added as last string of returned WordGram
+	 * @return new WordGram as specified
+	 */
 	public WordGram shiftAdd(String last) {
 		WordGram wg = new WordGram(myWords,0,myWords.length);
 		for(int k=0; k < wg.myWords.length-1; k++){
@@ -57,6 +75,7 @@ public class WordGram {
 		return wg;
 	}
 
+	@Override
 	public String toString(){
 		if (myToString == null) {
 			myToString = String.join(" ",myWords);
