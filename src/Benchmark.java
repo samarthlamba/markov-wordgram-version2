@@ -88,7 +88,7 @@ public class Benchmark {
 		File file = new File("data/"+fileName);
 		double[] data;
 		String source = TextSource.textFromFile(file);
-		int[] sizes = {100,200,400,800,1600,3200,6400,12800};
+		int[] sizes = {1000,2000,4000,8000,16000,32000,64000};
 		int order = 5;
 		MarkovInterface<String> model = new BaseMarkov(order);
 		
