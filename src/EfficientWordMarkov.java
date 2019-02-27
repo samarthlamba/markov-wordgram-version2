@@ -1,16 +1,32 @@
 import java.util.*;
-
+/***
+ * 
+ * @author samar
+ *States variable myMap
+ */
 public class EfficientWordMarkov extends BaseWordMarkov{
 	private Map<WordGram, ArrayList<String>> myMap;
-	
+	/***
+	 * 
+	 * @param order
+	 * Uses order from BaseWordMarkov
+	 * Initializes myMap as a new HashMap with two parameters
+	 */
 	public EfficientWordMarkov(int order){
 		super(order);
 		myMap = new HashMap<WordGram, ArrayList<String>>();
 	}
+	/***
+	 * same as BaseWordMarkov and initializes myMap with two parameter
+	 */
 	public EfficientWordMarkov() {
 		this(3);
 		myMap = new HashMap<WordGram, ArrayList<String>>();
 	}
+	/***
+	 * adds word grams that we are looking for with appropriate letter after the word gram.
+	 * Changes myMap
+	 */
 	@Override
 	public void setTraining(String text){
 		myWords = text.split("\\s+");
@@ -28,7 +44,10 @@ public class EfficientWordMarkov extends BaseWordMarkov{
 	}
 		
 			
-	
+	/***
+	 * checks if myMap has a wordGram
+	 * @returns the key from myMap
+	 */
 	@Override
 	public ArrayList<String> getFollows(WordGram kGram) {
 		if (!myMap.containsKey(kGram))

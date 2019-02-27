@@ -32,7 +32,9 @@ time	source	#chars
 
 Yes the timing supports the O(NT) analysis. This is showed by the code in BaseMarkov getFollows will be called T times when T random characters
 are generated. Each time this happens, getFollows() looks at the entire source which has N characters so the total time is O(TN). We can also see
-this from our results as when the 
+this from our results as when the #char increases and source stays constant, time increases. If #chars doubles and sources stay the same, time also
+doubles (from 1000 char to 2000 char, time goes from 0.261*2~0.438). On the flip side, if sources double and #char stays constant, time still
+ doubles (507914 sources to 1015828, time goes from 0.754*2~1.5sec). This means runtime is dependent on both N and T.
 
 
 
@@ -64,8 +66,13 @@ time	source	#chars
 2.346	5079140	4096
 
 Yes the timing supports the O(N+T) analysis. This is as O(N+T) effectively acts as O(N). This should thus be a linear growth. This can be seen 
-by the fact that as you double the number 
+by the fact that the time stays relatively constant irresepective of the growth in the #chars. If #char is 1000 or #chars is 32000, time is about 
+0.140 seconds. On the other hand, if sources double, time also doubles which mean only the sources affects the run time and #chars has no effect
+on the RunTime. 
 (3)The tests in the class Benchmark use an order-5 Markov Model. 
 Run tests that you think are appropriate to determine if the order of the 
 Markov Model has a significant impact on the running time for BaseMarkov. 
 Explain your reasoning.
+Higher the order the faster the running time for BaseMarkov. This makes sense as the bigger the order the more letters it uses to predict
+text. But the for Loop loops until the number of iterations is "length-myOrder" so a bigger order would mean that this value is lower. This means
+that there would be less iterations which will save time in the long run. A smaller order would mean that the code will loop many more times. 
