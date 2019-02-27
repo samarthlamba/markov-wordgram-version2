@@ -1,6 +1,6 @@
 This is the analysis for Markov Part 2, Spring 2019
 
-Include your name and net id here. Answer the questions from the assignment 
+Sam Lamba (sl562). Answer the questions from the assignment 
 that are reproduced below
 
 (1) Determine (from running Benchmark.java) how long it takes for 
@@ -10,6 +10,29 @@ Include these timings in your report.
 The program also generates 4,096 characters using texts that increase in 
 size from 496,768 characters to 4,967,680 characters (10 times the number).  
 Do the timings support the O(NT) analysis for BaseMarkov?
+time	source	#chars
+0.261	507914	1000
+0.438	507914	2000
+0.899	507914	4000
+1.552	507914	8000
+3.916	507914	16000
+5.636	507914	32000
+11.123	507914	64000
+
+0.754	507914	4096
+1.500	1015828	4096
+2.132	1523742	4096
+2.879	2031656	4096
+3.491	2539570	4096
+4.240	3047484	4096
+4.727	3555398	4096
+4.863	4063312	4096
+6.028	4571226	4096
+6.267	5079140	4096
+
+Yes the timing supports the O(NT) analysis. This is showed by the code in BaseMarkov getFollows will be called T times when T random characters
+are generated. Each time this happens, getFollows() looks at the entire source which has N characters so the total time is O(TN). We can also see
+this from our results as when the 
 
 
 
@@ -20,7 +43,28 @@ Include these timings in your report.
 The program also generates 4,096 characters using texts that increase in 
 size from 496,768 characters to 4,967,680 characters (10 times the number).  
 Do the timings support the O(N+T) analysis for EfficientMarkov?
+time	source	#chars
+0.145	507914	1000
+0.212	507914	2000
+0.227	507914	4000
+0.165	507914	8000
+0.144	507914	16000
+0.132	507914	32000
+0.163	507914	64000
 
+0.141	507914	4096
+0.291	1015828	4096
+0.439	1523742	4096
+0.607	2031656	4096
+0.784	2539570	4096
+0.956	3047484	4096
+1.127	3555398	4096
+1.374	4063312	4096
+1.906	4571226	4096
+2.346	5079140	4096
+
+Yes the timing supports the O(N+T) analysis. This is as O(N+T) effectively acts as O(N). This should thus be a linear growth. This can be seen 
+by the fact that as you double the number 
 (3)The tests in the class Benchmark use an order-5 Markov Model. 
 Run tests that you think are appropriate to determine if the order of the 
 Markov Model has a significant impact on the running time for BaseMarkov. 

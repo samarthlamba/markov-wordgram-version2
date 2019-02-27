@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class EfficientWordMarkov extends BaseWordMarkov{
-	Map<WordGram, ArrayList<String>> myMap;
+	private Map<WordGram, ArrayList<String>> myMap;
 	
 	public EfficientWordMarkov(int order){
 		super(order);
