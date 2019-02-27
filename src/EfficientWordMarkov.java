@@ -16,13 +16,13 @@ public class EfficientWordMarkov extends BaseWordMarkov{
 		myWords = text.split("\\s+");
 		myMap.clear();
 		for (int i = 0; i < myWords.length-myOrder+1;i=i+1) {
-			myMap.putIfAbsent(new WordGram(myWords, i,i+myOrder), new ArrayList <String>()); 
+			myMap.putIfAbsent(new WordGram(myWords, i,myOrder), new ArrayList <String>()); 
 			if (i+ myOrder+1 > myWords.length)
 			{
-				myMap.get(new WordGram(myWords, i,i+myOrder)).add(PSEUDO_EOS);
+				myMap.get(new WordGram(myWords, i,myOrder)).add(PSEUDO_EOS);
 			}
 			else {				
-				myMap.get(new WordGram(myWords, i,i+myOrder)).add(myWords[i]+myOrder);
+				myMap.get(new WordGram(myWords, i,myOrder)).add(myWords[i+myOrder]);
 		}
 		}
 	}
